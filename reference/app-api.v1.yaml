@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: app-api
+  version: '1.0'
+  description: this is test.
+  contact:
+    name: shinnaga
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/app/{version}/appinfo/get':
+    parameters:
+      - schema:
+          type: string
+        name: version
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-app-version-appinfo-get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  app_info:
+                    type: string
+                  app_value:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    app_info: app_1
+                    app_value: this app is test.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                service_id:
+                  type: string
+                service_secret:
+                  type: string
+            examples:
+              example:
+                value:
+                  service_id: string
+                  service_secret: string
+        description: this is test.
+      tags:
+        - app
+      description: this is test.
+components:
+  schemas: {}
+tags:
+  - name: app
